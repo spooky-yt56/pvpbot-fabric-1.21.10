@@ -1,1 +1,20 @@
-
+{
+  "schemaVersion": 1,
+  "id": "pvpbot",
+  "version": "${version}",
+  "name": "PvP Bot (Starter)",
+  "description": "Adaptive PvP practice bot (starter) — sword/axe/mace support",
+  "authors": ["SpookyOnly"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.spooky.pvpbot.PvPBotMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.17.0",
+    "fabric": "*"
+  }
+}
