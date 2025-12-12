@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.3.7' // typical version; if Loom version changes you can update
+    id 'fabric-loom' version '1.3.7'
     id 'java'
 }
 
@@ -7,8 +7,11 @@ group = 'com.spooky'
 version = '1.0.0'
 archivesBaseName = 'pvpbot'
 
-sourceCompatibility = JavaVersion.VERSION_21
-targetCompatibility = JavaVersion.VERSION_21
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
 
 repositories {
     mavenCentral()
@@ -19,10 +22,16 @@ dependencies {
     minecraft "com.mojang:minecraft:1.21.10"
     mappings "net.fabricmc:yarn:1.21.10+build.1:v2"
     modImplementation "net.fabricmc:fabric-loader:0.17.3"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:0.86.0+1.21.10" // may need version tweak
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.86.0+1.21.10"
 }
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
     options.release = 21
+}
+
+tasks.jar {
+    from(sourceSets.main.get().output)
+    archiveBaseName.set("pvpbot")
+    archiveVersion.set("1.0.0")
 }
