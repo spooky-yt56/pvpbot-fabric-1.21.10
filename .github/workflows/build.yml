@@ -17,8 +17,8 @@ jobs:
           java-version: '21'
       - name: Grant execute for gradlew
         run: chmod +x ./gradlew
-      - name: Build
-        run: ./gradlew build --no-daemon
+      - name: Build Mod
+        run: ./gradlew buildMod --no-daemon
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
