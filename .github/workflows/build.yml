@@ -1,6 +1,5 @@
 name: Build Fabric Mod
 
-# Trigger workflow on push to main or manual run
 on:
   push:
     branches: [ main ]
@@ -11,28 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Checkout repo
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
-    # 2. Set up Java 21 (needed for Minecraft 1.21.10)
     - name: Set up Java
       uses: actions/setup-java@v3
       with:
         java-version: 21
         distribution: temurin
 
-    # 3. Make Gradle wrapper executable (required on Linux)
     - name: Make gradlew executable
       run: chmod +x ./gradlew
 
-    # 4. Build the mod jar
     - name: Build Mod Jar
       run: ./gradlew jar --no-daemon
 
-    # 5. Upload the built jar as artifact
     - name: Upload Mod Jar
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: pvpbot-jar
         path: build/libs/*.jar
